@@ -6,28 +6,32 @@ Text Direction : Install Kubernetes using MiniKube
 sudo apt-get remove docker docker-engine docker.io containerd runc
 
 
-
 2. Update the apt package index
 
 sudo apt-get update
 
-sudo apt-get install \    apt-transport-https \    ca-certificates \    curl \    gnupg \    lsb-release
-
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
 
 3. Add Docker’s official GPG key:
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
-
-
 4. Use the following command to set up the stable repository
 
-echo \  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 
 5. Install Docker Engine
+sudo apt-get update
 
-sudo apt-get updatesudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 
 6. verify Docker version
@@ -42,10 +46,11 @@ docker --version
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
 
-
 2. Install kubectl
 
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+
 3. Test to ensure the version you installed is up-to-date:
 
 kubectl version --client
@@ -58,11 +63,14 @@ kubectl version --client
 
 1. Download Binay
 
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64chmod +x minikube-linux-amd64
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
+
 2. Install Minikube
 
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
-
 
 
 3. Verify Installation
@@ -70,10 +78,18 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 minikube version
 
 
-
 4. Start Kubernetes Cluster
 
-sudo apt install conntracksudo minikube start --vm-driver=none
+sudo apt install conntrack
+
+sudo apt-get update
+
+VERSION="v1.27.1"  # You can change the version as needed
+curl -LO https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
+sudo tar -C /usr/local/bin -xzf crictl-$VERSION-linux-amd64.tar.gz
+rm crictl-$VERSION-linux-amd64.tar.gz
+
+sudo minikube start --vm-driver=none
 
 
 5. Get Cluster Information
