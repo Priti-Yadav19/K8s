@@ -96,3 +96,30 @@ sudo minikube start --vm-driver=none
 
 kubectl config view
 
+
+Some notes below: 
+The ideal EC2 instance type for installing Kubernetes using Minikube depends on your use case, resource requirements, and budget. Here are some considerations and recommendations:
+
+Development and Testing:
+
+t3.medium: 2 vCPUs, 4 GB RAM
+t3.large: 2 vCPUs, 8 GB RAM
+Small Production or More Intensive Testing:
+
+t3.xlarge: 4 vCPUs, 16 GB RAM
+m5.large: 2 vCPUs, 8 GB RAM
+Higher Performance Needs:
+
+m5.xlarge: 4 vCPUs, 16 GB RAM
+c5.large: 2 vCPUs, 8 GB RAM (compute optimized)
+c5.xlarge: 4 vCPUs, 8 GB RAM (compute optimized)
+Persistent Storage and Network Performance:
+
+Consider using m5 series for balanced compute, memory, and network performance.
+If you need high I/O performance, you might consider i3 instances which provide high IOPS.
+General Recommendations:
+t3.medium or t3.large are good starting points for development and testing.
+For more stable and higher performance environments, consider m5.large or m5.xlarge.
+t3 instances offer a good balance of cost and performance with burst capabilities, making them suitable for many development scenarios.
+m5 instances are more balanced and suitable for workloads requiring consistent performance.
+c5 instances are better if your workloads are CPU-bound.
