@@ -1,3 +1,29 @@
+Namepsaces:
 kubectl get namespaces
 kubectl get pods --namespace <namespace>
 kubectl create namespace <namespace>
+kubectl get pods --all-namespaces
+
+Kubernetes Management Tools:
+kubectl
+Kubeadm
+Minikube
+helm
+Kompose
+Kustomize
+
+Features of K8s:
+Automated Scheduling
+Horizontal scaling
+Healing capabilities
+Storage Orchestration
+Auto upgrade and Rollback
+Secret and Configuration Management
+
+
+
+
+
+
+
+
