@@ -1,0 +1,3 @@
+kubectl get namespaces
+kubectl get pods --namespace <namespace>
+kubectl create namespace <namespace>
