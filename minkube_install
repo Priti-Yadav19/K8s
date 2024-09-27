@@ -50,5 +50,15 @@ kubectl get deployment
 kubectl get pods
 kubectl logs <pod-name>
 kubectl delete deployment hello-node
+kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+minikube service <svc_name>
+kubectl get svc
+kubectl delete service <service_name>
+kubectl delete deployment <deployment_name>
+
+
+
+
+
 
 
