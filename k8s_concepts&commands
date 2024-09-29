@@ -20,6 +20,22 @@ Storage Orchestration
 Auto upgrade and Rollback
 Secret and Configuration Management
 
+Kubeadm:
+kubeadm token create --print-join-command
+kubeadm token list
+
+Maintanence Window:
+kubectl drain <node_name>
+kubectl drain <node_name> --ignore-daemonsets
+kubectl uncordon <node_name>
+kubectl get pods -o wide    (displays all the running nodes along their nodes)
+kubectl apply -f <file_name>
+kubectl drain <node_name> --ignore-daemonsets --force
+kubectl uncordon <node_name_drained_earlier>
+
+
+
+
 
 
 
