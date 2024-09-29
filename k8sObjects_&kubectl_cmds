@@ -1,0 +1,15 @@
+
+Managing object using command line kubectl:
+kubectl create -f <deployment/svc_yml_filename>
+kubectl apply -f <file_name>
+kubectl api-resources    (gives number of objects and resources provided by k8s)
+kubectl api-resources | wc -l    (gives no. of obects exists)
+kubectl get pods <pod_name> -o wide
+kubectl get pods <pod_name> -o json
+kubectl get pods <pod_name> -o yaml
+kubectl describe pods <pod_name> [ kubectl describe <object_type> <object_name> ]
+kubectl exec <pod_name> -c <container_name> -- <command>
+kubectl exec draining-node-test-pod -c nginx -- cat /etc/nginx/nginx.conf
+kubectl delete pod <pod_name>   [ kubectl delete <object_type> <object_name>]
+
+
